@@ -28,3 +28,15 @@ function enqueueCustomStyles($extraStyles = null) {
     }
 }
 add_action('wp_enqueue_scripts', 'enqueueCustomStyles');
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+/**
+* Hides the WordPress version number.
+*
+* @author Ben 'Fxfey'
+*/
+function removeWpVersion() {
+    return '';
+}
+add_filter('the_generator', 'removeWpVersion');
