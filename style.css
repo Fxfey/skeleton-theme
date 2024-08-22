@@ -43,8 +43,25 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 /* Josh's Custom CSS Reset Ends */
 
+
+/* Define Font */
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto&display=swap');
 
 * {
     font-family: "Red Hat Display", sans-serif;
+}
+
+
+/* Define breakpoints */
+:root {
+    --tablet: 960px;
+    --mobile: 768px;
+}
+
+/* Apply styles for screens with a width of 960px or less (tablet and smaller) */
+@media (max-width: var(--tablet)) {
+}
+
+/* Apply styles for screens with a width of 768px or less (mobile devices) */
+@media (max-width: var(--mobile)) {
 }
