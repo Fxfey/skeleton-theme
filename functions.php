@@ -40,3 +40,43 @@ function removeWpVersion() {
     return '';
 }
 add_filter('the_generator', 'removeWpVersion');
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes the WordPress version query string from scripts and styles URLs.
+ *
+ * This function checks if the `ver` query string in the URL matches the current
+ * WordPress version and removes it if it does. This helps to obscure the WordPress
+ * version used by the site, adding a layer of security by making it harder for attackers
+ * to target specific vulnerabilities.
+ *
+ * @param string $src The source URL of the script or style.
+ * @return string The modified source URL without the WordPress version query string.
+ *
+ * @author Ben 'Fxfey'
+ */
+function removeWpVersionStrings($src) {
+    global $wp_version;
+    
+    // Parse the query string from the URL into an array
+    parse_str(parse_url($src, PHP_URL_QUERY), $query);
+    
+    // Check if the 'ver' query parameter is present and matches the WordPress version
+    if (!empty($query['ver']) && $query['ver'] === $wp_version) {
+        // Remove the 'ver' query parameter if it matches the WordPress version
+        $src = remove_query_arg('ver', $src);
+    }
+    
+    // Return the modified URL
+    return $src;
+}
+
+// Apply the function to script and style loader sources to remove the version string
+add_filter('script_loader_src', 'removeWpVersionStrings');
+add_filter('style_loader_src', 'removeWpVersionStrings');
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+// Disable XML-RPC
+add_filter('xmlrpc_enabled', '__return_false');
