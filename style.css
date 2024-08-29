@@ -52,16 +52,74 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Define breakpoints */
-:root {
-    --tablet: 960px;
-    --mobile: 768px;
+/* Nav Styling */
+.hamburger {
+    display: none;
+    height: 80px
 }
 
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: auto;
+}
+
+.hamRotate.active {
+    transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+    transform: rotate(180deg);
+}
+
+.line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:#000;
+    stroke-width:5.5;
+    stroke-linecap:round;
+}
+
+.ham-state .top {
+    stroke-dasharray: 40 121;
+}
+
+.ham-state .bottom {
+    stroke-dasharray: 40 121;
+}
+
+.ham-state.active .top {
+    stroke-dashoffset: -68px;
+}
+
+.ham-state.active .bottom {
+    stroke-dashoffset: -68px;
+}
+
+@media (max-width: 960px) {
+    .hamburger {
+        display: flex;
+    }
+    .navbar {
+        display: none;
+    }
+}
+
+
+/* Define breakpoints */
+/* tablet: 960px */
+/* mobile: 768px */
+
 /* Apply styles for screens with a width of 960px or less (tablet and smaller) */
-@media (max-width: var(--tablet)) {
+@media (max-width: 960px) {
+
 }
 
 /* Apply styles for screens with a width of 768px or less (mobile devices) */
-@media (max-width: var(--mobile)) {
+@media (max-width: 768px) {
 }
