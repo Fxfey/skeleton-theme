@@ -37,24 +37,27 @@ add_action('wp_enqueue_scripts', 'enqueueCustomStyles');
 * If no parameter is passed, the main js file is enqueued.
 * If a parameter is passed, the specified js file(s) are enqueued.
 *
-* @param mixed $extraScripts String or array of stylesheet names to be included.
+* @param mixed $extraScripts String or array of js file names to be included.
 *
 * @author Ben 'Fxfey'
 */
 function enqueueCustomScripts($extraScripts = null) {
-    // Enqueue the main stylesheet
+    // Enqueue jQuery
+    wp_enqueue_script('jquery');
+
+    // Enqueue the main JS file
     wp_enqueue_script('main-script', get_template_directory_uri() . '/main.js');
 
-    // Check if $extraStyles is provided and not empty
+    // Check if $extraScripts is provided and not empty
     if ($extraScripts) {
-        // If $extraStyles is a string, convert it to an array for consistent processing
+        // If $extraScripts is a string, convert it to an array for consistent processing
         if (is_string($extraScripts)) {
             $extraScripts = array($extraScripts);
         }
 
         // Iterate over each js file and enqueue it
         foreach ($extraScripts as $script) {
-            wp_enqueue_script('extra-script-' . $script, get_template_directory_uri() . "/css/$script/$script.css");
+            wp_enqueue_script('extra-script-' . $script, get_template_directory_uri() . "/js/$script.js");
         }
     }
 }
