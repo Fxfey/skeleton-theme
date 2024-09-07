@@ -51,6 +51,35 @@ p, h1, h2, h3, h4, h5, h6 {
     font-family: "Red Hat Display", sans-serif;
 }
 
+/* font sizing */
+h1 {
+    font-size: 47.78px; 
+}	
+
+h2 {
+    font-size: 39.81px
+} 	
+
+h3 {
+    font-size: 33.18px 	
+}
+
+h4 {
+    font-size: 27.65px
+} 	
+
+h5 {
+    font-size: 23.04px
+} 	
+
+h6 {
+    font-size: 19.2px
+} 	
+
+p {
+    font-size: 16px
+}	
+
 /* Define breakpoints */
 /* tablet: 960px */
 /* mobile: 768px */
