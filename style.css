@@ -131,3 +131,47 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Apply styles for screens with a width of 768px or less (mobile devices) */
 @media (max-width: 768px) {
 }
+
+.site-footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-social a {
+    color: #fff;
+    margin: 0 10px;
+}
+
+.footer-info {
+    margin: 10px 10px 0px 10px;
+}
