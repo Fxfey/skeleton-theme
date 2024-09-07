@@ -29,6 +29,10 @@ function enqueueCustomStyles($extraStyles = null) {
 }
 add_action('wp_enqueue_scripts', 'enqueueCustomStyles');
 
+add_action('wp_enqueue_scripts', function() {
+    enqueueCustomStyles('navbar');
+});
+
 // ------------------------------------------------------------------------------------------------------------------------
 
 /**

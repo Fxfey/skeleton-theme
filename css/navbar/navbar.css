@@ -1,0 +1,195 @@
+/* Hamburger pre styling */
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: auto;
+}
+
+.hamRotate.active {
+    transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+    transform: rotate(180deg);
+}
+
+.line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:#fff;
+    stroke-width:5.5;
+    stroke-linecap:round;
+}
+
+.ham-state .top {
+    stroke-dasharray: 40 121;
+}
+
+.ham-state .bottom {
+    stroke-dasharray: 40 121;
+}
+
+.ham-state.active .top {
+    stroke-dashoffset: -68px;
+}
+
+.ham-state.active .bottom {
+    stroke-dashoffset: -68px;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+/* hide hamburger by default */
+.hamburger {
+    display: none;
+    height: 80px
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+/* display hamburger at tablet */
+@media (max-width: 960px) {
+    .hamburger {
+        display: flex;
+    }
+    .navbar {
+        display: none;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+/* define hamburger animations */
+.active-menu {
+    display: flex;
+    animation: slideDownFadeIn 0.8s ease forwards; /* Animation effect */
+}
+.closed {
+    display: flex;
+    animation: slideUpFadeOut 0.8s ease forwards; /* Animation effect */
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+/* desktop nav styling */
+.navbar {
+    background-color: #000;
+    height: 130px;
+    width: 100%;
+}
+
+.nav-item-container {
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    margin: auto 0px;
+}
+
+/* style nav link */
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+    font-family: "EB Garamond", serif;
+}
+.nav-link::after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    display: block;
+    background: #fff;
+    transition: 400ms;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+.ham-icon-container {
+    position:absolute;
+    right: 10px;
+    top: 0px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.hamburger {
+    background-color: #000;
+    position: relative;
+}
+
+.hamburger-menu {
+    flex-direction: column;
+    background-color: #000;
+    height: fit-content;
+    width: 100%;
+    z-index: 1;
+    display: none; /* Hidden by default */
+    position: absolute;
+    margin-top: 80px;
+}
+
+.ham-item {
+    margin: auto 0px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+/* style hamburger link */
+.ham-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+}
+.ham-link::after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    display: block;
+    background: #fff;
+    transition: 400ms;
+}
+.ham-link:hover::after {
+    width: 100%;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+/* Keyframes for opening the menu */
+@keyframes slideDownFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for closing the menu */
+@keyframes slideUpFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+}
