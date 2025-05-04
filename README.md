@@ -58,3 +58,7 @@ The Skeleton Theme comes out the box with some pre defined styles which speed up
 
 Contains the color theme and a modern CSS reset,
 Thanks to [Josh W Comeau](https://www.joshwcomeau.com/css/custom-css-reset/) for this one!
+
+#### `typography.css`
+
+Contains the setup of the theme typography, pre defining the absolute sizings for `<h*>` tags
