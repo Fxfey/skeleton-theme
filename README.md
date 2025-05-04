@@ -37,3 +37,24 @@ The composer setup is done in a way to ensure site security.
 4. Run `composer dump-autoload`
 
 5. Voila! autoload should now work!
+
+## Structure
+
+The structure for this theme has been created out of the knowledge i've learn on my developer journey, the heavy lifting in this theme is done via classes within the `core/` directory.
+
+### `Styles`
+
+This class is what handles the CSS sheets for the theme, it currently does the following:
+
+-   Enqueues the global stylesheet
+
+## Features
+
+### Styling
+
+The Skeleton Theme comes out the box with some pre defined styles which speed up the development process straight away, if these need to be tweaked - they're made in a way which lets be happen easily and efficiently.
+
+#### `global.css`
+
+Contains the color theme and a modern CSS reset,
+Thanks to (Josh W Comeau)[https://www.joshwcomeau.com/css/custom-css-reset/] for this one!

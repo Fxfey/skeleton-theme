@@ -1,0 +1,112 @@
+:root {
+    /** Theme primary colors */
+    --primary-0: #007d6e;
+    --primary-10: #348b7d;
+    --primary-20: #52998c;
+    --primary-30: #6ca89c;
+    --primary-40: #85b6ac;
+    --primary-50: #9dc4bc;
+
+    /** Theme dark surface colors */
+    --surface-dark-0: #1c1c1c;
+    --surface-dark-10: #313131;
+    --surface-dark-20: #474747;
+    --surface-dark-30: #5f5f5f;
+    --surface-dark-40: #777777;
+    --surface-dark-50: #919191;
+
+    /** Theme light surface colors */
+    --surface-light-0: #f2ebeb;
+    --surface-light-10: #e5dfdf;
+    --surface-light-20: #d8d2d2;
+    --surface-light-30: #cbc6c6;
+    --surface-light-40: #bebaba;
+    --surface-light-50: #b1aeae;
+}
+
+/* -------------------------------------------------------------------- */
+
+/* Setting preference variables */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: var(--surface-dark-0);
+        --text: var(--surface-light-0);
+        --surface-muted: var(--surface-dark-30);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: var(--surface-light-0);
+        --text: var(--surface-dark-0);
+        --surface-muted: var(--surface-light-20);
+    }
+}
+
+/* -------------------------------------------------------------------- */
+
+/*
+    Josh's Custom CSS Reset
+    https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+
+    /* Custom Colors */
+    background-color: var(--background);
+    color: var(--text);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+p {
+    text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+#root,
+#__next {
+    isolation: isolate;
+}
