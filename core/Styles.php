@@ -2,6 +2,10 @@
 
 namespace SkeletonTheme;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class Styles
 {
     public static function init()

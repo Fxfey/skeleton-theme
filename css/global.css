@@ -44,6 +44,28 @@
 }
 
 /* -------------------------------------------------------------------- */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Use viewport height to ensure full screen height */
+
+    /* Custom Colors */
+    background-color: var(--background);
+    color: var(--text);
+}
+
+main {
+    flex: 1 0 auto; /* Grow, don't shrink, use auto basis */
+}
+
+footer {
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
 
 /*
     Josh's Custom CSS Reset
@@ -62,10 +84,6 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-
-    /* Custom Colors */
-    background-color: var(--background);
-    color: var(--text);
 }
 
 img,
