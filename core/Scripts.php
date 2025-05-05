@@ -18,7 +18,7 @@ class Scripts
         wp_enqueue_script(
             'global-script',
             THEME_BASE . '/js/global.js',
-            [],
+            ['jquery'],
             filemtime(THEME_PATH . '/js/global.css')
         );
     }

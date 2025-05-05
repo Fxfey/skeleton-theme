@@ -62,3 +62,7 @@ Thanks to [Josh W Comeau](https://www.joshwcomeau.com/css/custom-css-reset/) for
 #### `typography.css`
 
 Contains the setup of the theme typography, pre defining the absolute sizings for `<h*>` tags
+
+### Scripts
+
+The scripts for this site use jQuery, mainly due to the fact that we are planning for efficiency here. jQuery provides us with this.
