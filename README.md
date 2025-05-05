@@ -66,3 +66,40 @@ Contains the setup of the theme typography, pre defining the absolute sizings fo
 ### Scripts
 
 The scripts for this site use jQuery, mainly due to the fact that we are planning for efficiency here. jQuery provides us with this.
+
+### Security
+
+Security is a known issue with wordpress which is why this theme comes with security measures built in.
+
+#### `disableXMLRPC()`
+
+This is a fallback function just in case when setting up this theme, changing the rules in `htaccess` or `nginx` is nto performed.
+
+#### `removeVersionNumber()`
+
+Removes the WordPress version number from the site's <head> section by unhooking the wp_generator action.
+
+#### `limitLoginAttempts()`
+
+Limits login attempts to protect against brute-force attacks by locking the user out temporarily after a set number of failed login attempts. The method works as follows:
+
+1. Configuration:
+
+    `MAX_LOGIN_ATTEMPTS`: Maximum allowed login attempts (default: 5).
+    `LOCKOUT_DURATION`: Duration of the lockout period (default: 15 minutes).
+
+2. On Failed Login:
+
+    Every failed login attempt is tracked using a transient (temporary key) based on the user's IP address. The number of failed attempts increases with each failure.
+
+3. Login Error Message:
+
+    If too many failed attempts have been made, a custom error message is returned instead of the usual login error, informing the user to try again after the lockout period.
+
+4. Authentication Check:
+
+    If too many failed login attempts are detected, further login attempts are blocked, and an error message is returned.
+
+5. Reset on Successful Login:
+
+    If the user logs in successfully, the failed login attempt counter for their IP address is reset.
