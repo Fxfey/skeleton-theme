@@ -12,6 +12,7 @@ class Styles
     {
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueGlobalStyle']);
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueTypography']);
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue404']);
     }
 
     public static function enqueueGlobalStyle()
@@ -32,5 +33,17 @@ class Styles
             [],
             filemtime(THEME_PATH . '/css/typography.css')
         );
+    }
+
+    public static function enqueue404()
+    {
+        if (is_404()) {
+            wp_enqueue_style(
+                '404-style',
+                THEME_BASE . '/css/404.css',
+                [],
+                filemtime(THEME_PATH . '/css/404.css')
+            );
+        }
     }
 }

@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Page: Functions
- * Description: Contains major site wide logic
-*/
-
 // Constants
 define('THEME_BASE', get_template_directory_uri());
 define('THEME_PATH', get_template_directory());

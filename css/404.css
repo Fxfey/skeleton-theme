@@ -1,0 +1,39 @@
+.not-found-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+
+    text-align: center;
+    margin: 0 2rem;
+}
+
+.not-found-header {
+    margin-bottom: 2rem;
+}
+
+.not-found-header-span {
+    color: var(--primary-0);
+}
+
+.not-found-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.not-found-return {
+    background-color: var(--primary-10);
+    color: var(--text);
+    font-weight: 500;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 0.25rem;
+}
+
+.not-found-return:hover {
+    background-color: var(--primary-0);
+    transition: all 250ms;
+}
