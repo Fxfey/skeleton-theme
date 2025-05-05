@@ -13,5 +13,7 @@ define('THEME_PATH', get_template_directory());
 include_once THEME_PATH . '/../../../../vendor/autoload.php';
 
 use SkeletonTheme\Styles;
+use SkeletonTheme\Scripts;
 
 Styles::init();
+Scripts::init();

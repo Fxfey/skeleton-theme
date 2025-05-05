@@ -3,7 +3,6 @@
 }
 
 /* Base Heading Typography Reset */
-
 h1,
 h2,
 h3,
@@ -16,7 +15,7 @@ h6 {
     font-family: inherit;
 }
 
-/* Optional: Define a sensible font scale */
+/* Define a sensible font scale */
 h1 {
     font-size: 2.5rem;
 }
