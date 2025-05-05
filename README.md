@@ -85,7 +85,7 @@ Limits login attempts to protect against brute-force attacks by locking the user
 
 1. Configuration:
 
-    `MAX_LOGIN_ATTEMPTS`: Maximum allowed login attempts (default: 5).
+    `MAX_LOGIN_ATTEMPTS`: Maximum allowed login attempts (default: 5).<br>
     `LOCKOUT_DURATION`: Duration of the lockout period (default: 15 minutes).
 
 2. On Failed Login:
