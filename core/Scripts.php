@@ -19,7 +19,7 @@ class Scripts
             'global-script',
             THEME_BASE . '/js/global.js',
             ['jquery'],
-            filemtime(THEME_PATH . '/js/global.css')
+            filemtime(THEME_PATH . '/js/global.js')
         );
     }
 }
