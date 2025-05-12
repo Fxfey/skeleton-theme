@@ -1,0 +1,159 @@
+/*
+* Note: global styles are not enqueued here
+* They have been enqueued from the Styles.php class
+*/
+
+.login h1 a {
+    background-size: 55px;
+    width: 55px;
+    height: 55px;
+}
+
+#loginform {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#loginform:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#loginform p input:focus,
+#loginform div div input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    box-shadow: 0px 0px 0px 2px var(--primary-0);
+}
+
+#rememberme:focus {
+    box-shadow: none !important;
+}
+
+.wp-pwd button {
+    color: var(--primary-0) !important;
+}
+
+#wp-submit {
+    width: 100%;
+    margin: 16px 0 0 0;
+    background-color: var(--primary-0) !important;
+    border: none;
+    font-weight: 700;
+}
+
+#login_error p a {
+    color: var(--primary-0);
+}
+
+/* Setting preference variables */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--background);
+        color: var(--text);
+    }
+
+    body.login {
+        background-image: radial-gradient(
+                circle at 25% 25%,
+                rgba(255, 255, 255, 0.04) 2%,
+                transparent 2%
+            ),
+            radial-gradient(
+                circle at 75% 75%,
+                rgba(255, 255, 255, 0.04) 2%,
+                transparent 2%
+            );
+        background-size: 50px 50px;
+        background-position: 0 0, 25px 25px;
+    }
+
+    .login h1 a {
+        background-image: url(../assets/svg/skelix-logo-white.svg);
+    }
+
+    #loginform {
+        background-color: var(--surface-dark-10);
+    }
+
+    #loginform p input,
+    #loginform div div input {
+        background-color: var(--surface-light-10);
+        color: var(--surface-dark-10);
+    }
+
+    .login #nav a,
+    .login #backtoblog a {
+        color: var(--surface-light-0);
+    }
+
+    .login #nav a:hover,
+    .login #backtoblog a:hover {
+        color: var(--surface-light-20);
+    }
+
+    #login-message,
+    #login_error {
+        background-color: var(--surface-dark-10);
+        color: var(--text);
+        border-radius: 0px 5px 5px 0px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--background);
+        color: var(--text);
+    }
+
+    body.login {
+        background-image: radial-gradient(
+                circle at 25% 25%,
+                rgba(0, 0, 0, 0.1) 2%,
+                transparent 2%
+            ),
+            radial-gradient(
+                circle at 75% 75%,
+                rgba(0, 0, 0, 0.1) 2%,
+                transparent 1%
+            );
+        background-size: 50px 50px;
+        background-position: 0 0, 25px 25px;
+    }
+
+    .login h1 a {
+        background-image: url(../assets/svg/skelix-logo-black.svg);
+    }
+
+    #loginform {
+        background-color: var(--surface-light-10);
+    }
+
+    #loginform p input,
+    #loginform div div input {
+        background-color: var(--surface-dark-10);
+        color: var(--surface-light-10);
+    }
+
+    .login #nav a,
+    .login #backtoblog a {
+        color: var(--surface-dark-0);
+    }
+
+    .login #nav a:hover,
+    .login #backtoblog a:hover {
+        color: var(--surface-dark-20);
+    }
+
+    #login-message,
+    #login_error {
+        background-color: var(--surface-light-10);
+        color: var(--text);
+        border-radius: 0px 5px 5px 0px;
+    }
+}
