@@ -10,7 +10,9 @@ include_once THEME_PATH . '/../../../../vendor/autoload.php';
 use SkeletonTheme\Security;
 use SkeletonTheme\Styles;
 use SkeletonTheme\Scripts;
+use SkeletonTheme\Roles;
 
 Security::init();
 Styles::init();
 Scripts::init();
+Roles::init();
