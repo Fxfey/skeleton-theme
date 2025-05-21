@@ -10,54 +10,32 @@ class Styles
 {
     public static function init()
     {
-        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueGlobalStyle']);
-        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueTypography']);
-        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue404']);
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStyles']);
         add_action('login_head', [__CLASS__, 'enqueueLogin']);
     }
 
-    public static function enqueueGlobalStyle()
+    public static function runEnqueue($fileName)
     {
         wp_enqueue_style(
-            'global-style',
-            THEME_BASE . '/css/global.css',
+            "$fileName-style",
+            THEME_BASE . "/css/$fileName.css",
             [],
-            filemtime(THEME_PATH . '/css/global.css')
+            filemtime(THEME_PATH . "/css/$fileName.css")
         );
     }
 
-    public static function enqueueTypography()
+    public static function enqueueStyles()
     {
-        wp_enqueue_style(
-            'typography-style',
-            THEME_BASE . '/css/typography.css',
-            [],
-            filemtime(THEME_PATH . '/css/typography.css')
-        );
-    }
-
-    public static function enqueue404()
-    {
-        if (is_404()) {
-            wp_enqueue_style(
-                '404-style',
-                THEME_BASE . '/css/404.css',
-                [],
-                filemtime(THEME_PATH . '/css/404.css')
-            );
-        }
+        self::runEnqueue('global');
+        self::runEnqueue('typography');
+        self::runEnqueue('404');
     }
 
     public static function enqueueLogin()
     {
-        wp_enqueue_style(
-            'login-style',
-            THEME_BASE . '/css/login.css',
-            [],
-            filemtime(THEME_PATH . '/css/login.css')
-        );
-
         // Include global style
-        self::enqueueGlobalStyle();
+        self::runEnqueue('global');
+
+        self::runEnqueue('login');
     }
 }
