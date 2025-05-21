@@ -107,3 +107,8 @@ Limits login attempts to protect against brute-force attacks by locking the user
 5. Reset on Successful Login:
 
     If the user logs in successfully, the failed login attempt counter for their IP address is reset.
+
+### Roles
+
+The Roles class pure purpose is to remove some bloat which is not required when developing simple sites.
+In this case we remove `comments` & `tools` from the Editor role - this is because as a client their only worry should be the content.
