@@ -10,27 +10,25 @@ class Roles
 {
     public static function init()
     {
-        add_action('init', [__CLASS__, 'setRoles']);
-        add_filter('editable_roles', [__CLASS__, 'removeExistingRoles'], 10, 1);
+        add_action('admin_menu', [__CLASS__, 'backendMenuCleanUp']);
+        add_action('admin_bar_menu', [__CLASS__, 'adminBarCleanUp'], 65);
     }
 
-    public static function removeExistingRoles($roles)
+    public static function backendMenuCleanUp()
     {
-        return $roles;
-    }
-
-    public static function setRoles()
-    {
-        if (!get_role('client_admin')) {
-            // Create Client Admin role
-            // self::createClientAdmin();
-        }
-
-        if (!get_role('client_editor')) {
-            // Create Client Editor role
-            // self::createClientEditor();
+        if (current_user_can('editor') && !current_user_can('administrator')) {
+            remove_menu_page('edit-comments.php');
+            remove_menu_page('tools.php');
+            remove_menu_page('edit.php?post_type=acf-field-group');
         }
     }
 
-    // public static function createClientAdmin() {}
+    public static function adminBarCleanUp($adminBar)
+    {
+        if (!current_user_can('administrator')) {
+            global $wp_admin_bar;
+            $wp_admin_bar->remove_node('comments');
+        }
+        return $adminBar;
+    }
 }
