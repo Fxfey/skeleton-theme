@@ -31,7 +31,7 @@
     :root {
         --background: var(--surface-dark-0);
         --text: var(--surface-light-0);
-        --surface-muted: var(--surface-dark-30);
+        --surface-muted: var(--surface-dark-20);
     }
 }
 
