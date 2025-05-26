@@ -10,7 +10,7 @@ class Scripts
 {
     public static function init()
     {
-        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueGlobalScript']);
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueScripts']);
         add_action('admin_enqueue_scripts', [__CLASS__, 'enqueueHeadless'], 10, 1);
     }
 
