@@ -51,5 +51,6 @@ class Styles
         self::runEnqueue('global');
         self::runEnqueue('typography');
         self::runEnqueue('headless');
+        self::runEnqueue('/ui/toggle-switch');
     }
 }
