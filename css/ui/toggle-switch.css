@@ -35,7 +35,7 @@
 .toggle label:after {
     content: 'OFF';
     position: absolute;
-    top: 4px;
+    top: 20px;
     left: 4px;
     width: 42px;
     height: 24px;
