@@ -15,7 +15,7 @@
     );
     color: var(--text);
     padding: 4rem;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .headless-header {
@@ -31,6 +31,7 @@
     font-size: 2rem;
     max-width: 80%;
     margin: auto;
+    margin-top: 0.5rem;
 }
 
 .headless-toggle {
@@ -149,4 +150,35 @@
 
 .endpoint-row td {
     padding: 0.25rem 0.5rem;
+}
+
+/* Medium devices (tablets, 768px and under) */
+@media (max-width: 768px) {
+    .auto-fold #wpcontent {
+        padding-left: 0px;
+    }
+
+    .info-area {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .headless-page {
+        padding: 2rem;
+    }
+
+    .headless-header p {
+        max-width: 100%;
+        font-size: 1.5rem;
+    }
+
+    .headless-toggle {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .toggle label:after {
+        top: 4px !important;
+    }
 }
