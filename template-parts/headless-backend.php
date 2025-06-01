@@ -56,16 +56,25 @@
         <div class="info-card">
             <div class="info-card-title">
                 <?= get_template_part('assets/svg/cog'); ?>
-                <h3>How to Use</h3>
+                <h3>Your Endpoints</h3>
             </div>
             <p>If enabled, your API endpoints are automatically available. Simply make HTTP requests to fetch your content.</p>
-            <div class="api-endpoint"><?php echo esc_url(get_rest_url()); ?>skeleton/v1/posts</div>
-            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">Try visiting this URL to see your posts in JSON format</p>
+            <table class="endpoint-table">
+                <thead class="endpoint-table-head">
+                    <th>Post type</th>
+                    <th>Endpoint</th>
+                </thead>
+                <tbody>
+                    <?php
+                    $postTypes = get_post_types(['public' => true]);
+                    foreach ($postTypes as $type) { ?>
+                        <tr class="endpoint-row">
+                            <td><?= ucfirst($type); ?></td>
+                            <td><?= esc_url(get_rest_url()) . 'skelix/v1/' . $type ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
-    </div>
-
-    <div class="endpoint-list">
-        <h2>Your Endpoints</h2>
-        <!-- Put table with endpoints here -->
     </div>
 </div>

@@ -15,6 +15,7 @@
     );
     color: var(--text);
     padding: 4rem;
+    height: 100vh;
 }
 
 .headless-header {
@@ -125,16 +126,27 @@
     border-radius: 50%;
 }
 
-.endpoint-list {
-    margin-top: 1.5rem;
+.endpoint-table {
+    background-color: var(--surface-light-30);
+    color: var(--surface-dark-0);
     border-radius: 8px;
-    background-color: var(--surface-muted);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     width: 100%;
-    padding: 1.5rem;
+    border-spacing: 0px;
 }
 
-.endpoint-list h2 {
-    color: var(--text);
+.endpoint-row:nth-child(even) {
+    background-color: var(--surface-light-40);
+}
+
+.endpoint-table-head {
+    text-align: left;
+}
+
+.endpoint-table-head th {
+    padding: 0.25rem 0.5rem;
+    font-size: 14px;
+}
+
+.endpoint-row td {
+    padding: 0.25rem 0.5rem;
 }

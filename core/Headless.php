@@ -77,6 +77,10 @@ class Headless
 
     public static function registerDynamicEndpoints()
     {
+        if (!get_option('skelix-headless-api-status')) {
+            return;
+        }
+
         $postTypes = get_post_types(['public' => true]);
 
         foreach ($postTypes as $type) {
