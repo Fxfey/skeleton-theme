@@ -57,7 +57,7 @@ Skeleton Theme ships with clean, minimal, and developer-friendly styles out of t
 
 #### `typography.css`
 
--   Defines scalable font sizes for all heading tags (<h1>–<h6>)
+-   Defines scalable font sizes for all heading tags (`<h1>–<h6>`)
 
 #### `404.css`
 
