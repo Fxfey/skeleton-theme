@@ -1,10 +1,10 @@
-# Skeleton Theme
+# 🦴 Skeleton Theme
 
 A lightweight, customizable WordPress theme foundation designed to streamline development workflows. This bespoke theme provides a solid architecture with essential features while maintaining flexibility for custom implementations.
 
 ## Setup
 
-### Installation
+### 📥 Installation
 
 Clone this repository into your WordPress themes directory:
 
@@ -15,16 +15,17 @@ git clone https://github.com/Fxfey/skeleton-theme.git
 
 Activate the theme in WordPress admin panel
 
-### Composer
+### 📦 Composer Autoloading
 
-The composer setup is done in a way to ensure site security.
+Composer is configured to keep dependencies outside the public root for enhanced security.
 
-1. Navigate above the public root (the app directory) and initialise composer.
+1. Navigate above your public root (app/) and initialize Composer:
    `composer init`
 
-2. When prompted for a package name you must use `skeleton-theme/app` to ensure all auto loads work correctly.
+2. When prompted for a package name, use:
+   `skeleton-theme/app`
 
-3. Go into `composer.json` and replace the autoload with the following:
+3. Replace the autoload section in your `composer.json`:
 
     ```
     "autoload": {
@@ -34,88 +35,75 @@ The composer setup is done in a way to ensure site security.
     },
     ```
 
-4. Run `composer dump-autoload`
+4. Run the autoload generator:
+   `composer dump-autoload`
 
-5. Voila! autoload should now work!
+5. ✅ Voila! autoload should now work!
 
 ## Structure
 
 The structure for this theme has been created out of the knowledge i've learn on my developer journey, the heavy lifting in this theme is done via classes within the `core/` directory.
 
-### `Styles`
-
-This class is what handles the CSS sheets for the theme, it currently does the following:
-
--   Enqueues the global stylesheet
-
 ## Features
 
-### Styling
+### 🎨 Styling
 
-The Skeleton Theme comes out the box with some pre defined styles which speed up the development process straight away, if these need to be tweaked - they're made in a way which lets be happen easily and efficiently.
+Skeleton Theme ships with clean, minimal, and developer-friendly styles out of the box. You can tweak them easily for custom designs.
 
 #### `global.css`
 
-Contains the color theme and a modern CSS reset,
-Thanks to [Josh W Comeau](https://www.joshwcomeau.com/css/custom-css-reset/) for this one!
+-   Sets up base color variables
+-   Using [Josh W Comeau’s CSS Reset](https://www.joshwcomeau.com/css/custom-css-reset/)
 
 #### `typography.css`
 
-Contains the setup of the theme typography, pre defining the absolute sizings for `<h*>` tags
+-   Defines scalable font sizes for all heading tags (<h1>–<h6>)
 
 #### `404.css`
 
-Contains the 404 page styling.
+-   Basic styling for the 404 error page
 
-### Scripts
+### 🧠 Scripts
 
-The scripts for this site use jQuery, mainly due to the fact that we are planning for efficiency here. jQuery provides us with this.
+-   Built with jQuery for fast development and easy DOM manipulation
 
-### Security
+### 🔐 Security
 
 Security is a known issue with wordpress which is why this theme comes with security measures built in.
 
 #### `disableXMLRPC()`
 
-This is a fallback function just in case when setting up this theme, changing the rules in `htaccess` or `nginx` is nto performed.
+-   Disables XML-RPC as a fallback if server-level rules aren’t applied (`.htaccess` or `nginx`)
 
 #### `removeVersionNumber()`
 
-Removes the WordPress version number from the site's <head> section by unhooking the wp_generator action.
+-   Removes the WordPress version from <head> to obscure WP version from attackers
 
 #### `limitLoginAttempts()`
 
-Limits login attempts to protect against brute-force attacks by locking the user out temporarily after a set number of failed login attempts. The method works as follows:
+Protects against brute-force attacks:
 
-1. Configuration:
+1. Configurable Limits:
 
-    `MAX_LOGIN_ATTEMPTS`: Maximum allowed login attempts (default: 5).<br>
-    `LOCKOUT_DURATION`: Duration of the lockout period (default: 15 minutes).
+    - `MAX_LOGIN_ATTEMPTS`: Default 5
+    - `LOCKOUT_DURATION`: Default 15 minutes
 
-2. On Failed Login:
+2. How It Works:
 
-    Every failed login attempt is tracked using a transient (temporary key) based on the user's IP address. The number of failed attempts increases with each failure.
+    - Tracks failed attempts per IP using transients
+    - Shows custom error message during lockout
+    - Resets counter after successful login
 
-3. Login Error Message:
+### 👥 Roles
 
-    If too many failed attempts have been made, a custom error message is returned instead of the usual login error, informing the user to try again after the lockout period.
+The `Roles` class reduces dashboard clutter by customizing the Editor role:
 
-4. Authentication Check:
+-   Removes Comments & Tools for Editors
+    (Clients should focus solely on content)
 
-    If too many failed login attempts are detected, further login attempts are blocked, and an error message is returned.
+### 🪐 Headless
 
-5. Reset on Successful Login:
-
-    If the user logs in successfully, the failed login attempt counter for their IP address is reset.
-
-### Roles
-
-The Roles class pure purpose is to remove some bloat which is not required when developing simple sites.
-In this case we remove `comments` & `tools` from the Editor role - this is because as a client their only worry should be the content.
-
-### Headless
-
-#### 🚀 Features
+#### Features
 
 -   ✅ Toggleable headless API from the WP admin
 -   📚 Dynamic REST API endpoints for all public post types
