@@ -112,3 +112,30 @@ Limits login attempts to protect against brute-force attacks by locking the user
 
 The Roles class pure purpose is to remove some bloat which is not required when developing simple sites.
 In this case we remove `comments` & `tools` from the Editor role - this is because as a client their only worry should be the content.
+
+### Headless
+
+#### 🚀 Features
+
+-   ✅ Toggleable headless API from the WP admin
+-   📚 Dynamic REST API endpoints for all public post types
+-   🧱 Parses Gutenberg blocks into structured JSON
+-   📄 Supports pagination
+-   🖼 Image block parsing with multiple sizes
+-   🧾 List and heading block extraction
+
+#### Upcoming Features
+
+-   🗂 Taxonomy & Meta Data Integration
+    Include categories, tags, and custom fields in API response.
+-   ✨ Rich Text Block (core/paragraph)
+    Proper handling for paragraph content with inline formatting (bold, links, etc.).
+-   🧲 Embed Blocks (core/embed, YouTube, Vimeo, etc.)
+    Detect and extract embed URLs and their providers (great for video/audio previews).
+-   🗨 Quote Blocks (core/quote)
+    Parse quote content and citation separately.
+
+#### 📌 Notes
+
+Ensure Gutenberg is enabled and used for content blocks to parse correctly.
+Image parsing assumes default WordPress structure for wp_get_attachment_metadata.
