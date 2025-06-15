@@ -101,33 +101,40 @@ class Headless
         $route = $request->get_route();
         $postType = str_replace('/skelix/v1/', '', $route);
 
-        $postId = $request->get_param('post_id') ?? 0;
+        $postId = (int) ($request->get_param('post_id') ?? 0);
+        $pagination = (bool) ($request->get_param('pagination') ?? false);
+        $pageNumber = (int) ($request->get_param('page_number') ?? 1);
+        $postsPerPage = $pagination ? max(1, (int) ($request->get_param('posts_per_page') ?? 5)) : -1;
 
-        // Get post type from the URL and dynamically fetch posts
-        // TODO Params for:
-        // TODO Paged
-        // TODO Page No
-        // TODO ID Specific
-        $posts = get_posts([
-            'numberposts' => 0,
-            'posts_per_page' => 0,
-            'paged' => 1,
-            'orderby'     => 'date',
-            'order'       => 'DESC',
-            'post_type'   => $postType,
-            'include' => $postId
-        ]);
+        // Validate pagination
+        if ($pagination) {
+            $paginationData = self::calculatePagination($postsPerPage, $postType);
+            if ($pageNumber > $paginationData['total_pages']) {
+                return "This page does not exist";
+            }
+        }
 
+        $args = [
+            'posts_per_page' => $postsPerPage,
+            'paged' => $pagination ? $pageNumber : 1,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'post_type' => $postType,
+        ];
 
+        if ($postId) {
+            $args['include'] = [$postId];
+        }
+
+        $posts = get_posts($args);
         $parsedPosts = [];
+
         foreach ($posts as $post) {
-            $currentPost = [];
-
             $parsedBlocks = parse_blocks($post->post_content);
-
             $postContent = [];
+
             foreach ($parsedBlocks as $block) {
-                if (!$block['blockName']) {
+                if (empty($block['blockName'])) {
                     continue;
                 }
 
@@ -142,17 +149,15 @@ class Headless
                     $blockContent = self::parseImageBlock($block['attrs']['id']);
                 }
 
-                $currentBlock = [
+                $postContent[] = [
                     'blockName' => $blockName,
                     'blockContent' => $blockContent,
                 ];
-
-                $postContent[] = $currentBlock;
             }
 
             $user = get_user_by('ID', $post->post_author);
 
-            $currentPost = [
+            $parsedPosts[] = [
                 'post_id' => $post->ID,
                 'post_title' => $post->post_title,
                 'post_content' => $postContent,
@@ -160,9 +165,15 @@ class Headless
                 'date_posted' => $post->post_date,
                 'date_modified' => $post->post_modified,
             ];
-
-            $parsedPosts[] = $currentPost;
         }
+
+        if ($pagination) {
+            $parsedPosts['pagination'] = [
+                'current_page' => $pageNumber,
+                'total_pages' => $paginationData['total_pages'],
+            ];
+        }
+
         return $parsedPosts;
     }
 
@@ -232,5 +243,22 @@ class Headless
     public static function headlessPage()
     {
         get_template_part('template-parts/headless-backend', 'headless-wp-backend');
+    }
+
+    public static function calculatePagination($postsPerPage, $postType)
+    {
+        global $wpdb;
+
+        $totalPosts = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM wp_posts WHERE post_type = %s AND post_status = 'publish'",
+            $postType
+        ));
+
+        $totalPages = max(1, ceil($totalPosts / $postsPerPage));
+
+        return [
+            'total_posts' => $totalPosts,
+            'total_pages' => $totalPages,
+        ];
     }
 }
