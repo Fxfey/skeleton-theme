@@ -101,6 +101,8 @@ class Headless
         $route = $request->get_route();
         $postType = str_replace('/skelix/v1/', '', $route);
 
+        $postId = $request->get_param('post_id') ?? 0;
+
         // Get post type from the URL and dynamically fetch posts
         // TODO Params for:
         // TODO Paged
@@ -113,6 +115,7 @@ class Headless
             'orderby'     => 'date',
             'order'       => 'DESC',
             'post_type'   => $postType,
+            'include' => $postId
         ]);
 
 
